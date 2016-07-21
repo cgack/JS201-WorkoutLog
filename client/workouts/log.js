@@ -8,7 +8,7 @@ $(function() { // same as $(document).ready(function() {
 				var len = defs.length;
 				var opts;
 				for (var i = 0; i < len; i++) {
-					opts = "<option value='" + defs[i].id + "'>" + defs[i].description + "</option>";
+					opts += "<option value='" + defs[i].id + "'>" + defs[i].description + "</option>";
 				}
 				$("#log-definition").append(opts);
 			}	
