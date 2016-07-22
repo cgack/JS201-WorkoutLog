@@ -11,4 +11,4 @@ then go to the server directory and run `npm install`
 run the server using `node app.js` from the server directory
 
 in the /client directory run `npm install` and `bower install`
-run the http_server using `npm start`
+run the http_server using `npm start` note: on mac change the "start" command in package.json so that the slashes are / instead of \\
