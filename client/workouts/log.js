@@ -14,6 +14,18 @@ $(function() { // same as $(document).ready(function() {
 				$("#log-definition").append(opts);
 			},
 
+			setHistory: function() {
+				var history = WorkoutLog.log.workouts;
+				var len = history.length;
+				var lis = "";
+				for (var i = 0; i < len; i++) {
+					var result = history[i].result === "" ? "No result found" : history[i].result;
+					lis += "<li class='list-group-item'>" + history[i].def + " - " + result + "</li>";
+				}
+				$("#history-list").children().remove();
+				$("#history-list").append(lis);
+			},
+
 			create: function() {
 				var itsLog = {
 					desc: $("#log-description").val(),

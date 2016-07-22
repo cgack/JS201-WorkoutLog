@@ -1,5 +1,12 @@
 $(function() {
 	$.extend(WorkoutLog, {
+		afterSignin: function(sessionToken) {
+			WorkoutLog.setAuthHeader(sessionToken);
+			WorkoutLog.definition.fetchAll();
+			WorkoutLog.log.fetchAll();
+			$(".disabled").removeClass("disabled");
+			$("#loginout").text("Logout");
+		},
 		signup: function() {
 			var username = $("#su_username").val();
 			var password = $("#su_password").val();
@@ -19,12 +26,9 @@ $(function() {
 
 			signup.done(function(data) {
 				if (data.sessionToken) {
-					WorkoutLog.setAuthHeader(data.sessionToken);
+					WorkoutLog.afterSignin(data.sessionToken);
+					$("#signup-modal").modal("hide");
 				}
-
-				$("#signup-modal").modal("hide");
-				$(".disabled").removeClass("disabled");
-				$("#loginout").text("Logout");
 
 			}).fail(function() {
 				$("#su_error").text("There was an issue with sign up").show();
@@ -50,13 +54,9 @@ $(function() {
 
 			login.done(function(data) {
 				if (data.sessionToken) {
-					WorkoutLog.setAuthHeader(data.sessionToken);
+					WorkoutLog.afterSignin(data.sessionToken);
+					$("#login-modal").modal("hide");
 				}
-
-				$("#login-modal").modal("hide");
-				$(".disabled").removeClass("disabled");
-				$("#loginout").text("Logout");
-
 			}).fail(function() {
 				$("#li_error").text("There was an issue with sign up").show();
 			});
