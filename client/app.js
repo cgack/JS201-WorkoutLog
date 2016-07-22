@@ -28,7 +28,7 @@ $(document).ready(function() {
 	});
 
 	// bind tab change events
-	$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+	$("a[data-toggle=tab]").on("shown.bs.tab", function(e) {
 		var target = $(e.target).attr("href");
 		if (target === "#log") {
 			WorkoutLog.log.setDefinitions();
